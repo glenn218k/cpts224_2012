@@ -1,7 +1,5 @@
-ma: ma.o cma.o
 
-wbslage_test: wbslage_test.o
-	gcc wbslage_test.o -o wbslage_test
-wbslage_test.o: wbslage_test.c
-	gcc -c wbslage_test.c
-
+ropin5_test: ropin5_test.o
+	gcc ropin5_test.o -o ropin5_test
+ropin5_test.o: 	ropin5_test.c
+	gcc -c ropin5_test.c
