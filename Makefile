@@ -40,6 +40,12 @@ wbslage_test: wbslage_test.o
 wbslage_test.o: wbslage_test.c
 	gcc -g -c wbslage_test.c
 
+ropin5_test: ropin5_test.o
+	$(CC) ropin5_test.o -o ropin5_test
+
+ropin5_test.o: ropin5_test.c
+	$(CC) -c ropin5_test.c
+
 clean:
 	-rm *.o
 	-rm $(TARGETS)
