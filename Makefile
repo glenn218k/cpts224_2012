@@ -1,6 +1,8 @@
 CC=gcc
-TARGETS=ma libcma.so usakgb_test.o usakgb_test
+TARGETS=ma libcma.so usakgb_test.o usakgb_test cody-curry_test
 OPTIONS=-fPIC
+BASE=`basename $(DIRNAME)`
+DIST=cpts224_2012_test.tar
 
 all: $(TARGETS)
 
@@ -14,6 +16,14 @@ usakgb_test: usakgb_test.o cma.o
 	$(CC)  usakgb_test.o cma.o -o usakgb_test
 usakgb_test.o: usakgb_test.c
 	$(CC) -c usakgb_test.c
+
+cody-curry_test: cody-curry_test.o cma.o
+	$(CC) cody-curry.o cma.o -o cody-curry_test
+cody-curry_test.o: cody-curry_test.c
+	$(CC) -c cody-curry_test.c
+
+dist: clean
+	tar -cvf $(DIST) ./$(BASE)
 
 clean:
 	-rm *.o
