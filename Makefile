@@ -1,5 +1,5 @@
 CC=gcc
-TARGETS=ma libcma.so proreco_test clean_lite
+TARGETS=ma libcma.so proreco_test clean_lite usakgb_test.o usakgb_test lansdon_test wbslage_test
 OPTIONS=-g
 
 
@@ -22,6 +22,24 @@ proreco_test: proreco_test.o cma.o
 
 proreco_test.o: proreco_test.c cma.h cma.c
 	$(CC) $(OPTIONS) -c proreco_test.c -o proreco_test.o
+
+usakgb_test: usakgb_test.o cma.o
+	$(CC) usakgb_test.o cma.o -o usakgb_test
+
+usakgb_test.o: usakgb_test.c
+	$(CC) -c usakgb_test.c
+
+lansdon_test: lansdon_test.o cma.o
+	$(CC) lansdon_test.o -o lansdon_test -L. -lcma
+
+lansdon_test.o: lansdon_test.c cma.h cma.c
+	$(CC) $(OPTIONS) -c lansdon_test.c -o lansdon_test.o
+
+wbslage_test: wbslage_test.o
+	gcc  -g wbslage_test.o -o wbslage_test
+wbslage_test.o: wbslage_test.c
+	gcc -g -c wbslage_test.c
+
 
 clean:
 	-rm *.o
