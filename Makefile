@@ -1,6 +1,6 @@
 CC=gcc
 TARGETS=ma libcma.so proreco_test clean_lite usakgb_test.o usakgb_test lansdon_test wbslage_test
-OPTIONS=-g
+OPTIONS=-g -fPIC
 
 
 all: $(TARGETS)
@@ -9,7 +9,7 @@ libcma.so: cma.o
 	$(CC) $(OPTIONS) -shared cma.o -o libcma.so
 
 cma.o: cma.c cma.h
-	$(CC) $(OPTIONS) -fPIC -c cma.c -o cma.o
+	$(CC) $(OPTIONS) -c cma.c -o cma.o
 
 ma.o: ma.c cma.h
 	$(CC) $(OPTIONS) -c ma.c -o ma.o
@@ -37,13 +37,14 @@ lansdon_test.o: lansdon_test.c cma.h cma.c
 
 wbslage_test: wbslage_test.o
 	gcc  -g wbslage_test.o -o wbslage_test
+
 wbslage_test.o: wbslage_test.c
 	gcc -g -c wbslage_test.c
 
 
 clean:
 	-rm *.o
-	-rm proreco_test
+	-rm $(TARGETS)
 	-rm libcma.so
 	-rm ma
 clean_lite:
