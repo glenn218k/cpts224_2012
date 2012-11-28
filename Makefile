@@ -1,5 +1,5 @@
 CC=gcc
-TARGETS=libcma.so ma proreco_test usakgb_test lansdon_test wbslage_test clean_lite
+TARGETS=libcma.so ma proreco_test usakgb_test lansdon_test clean_lite
 OPTIONS=-g -fPIC
 
 all: $(TARGETS)
@@ -29,8 +29,7 @@ usakgb_test.o: usakgb_test.c
 	$(CC) -c usakgb_test.c
 
 lansdon_test: lansdon_test.o cma.o
-	$(CC) lansdon_test.o -o lansdon_test -L. -lcma
-
+	$(CC)  lansdon_test.o -o lansdon_test -L. -lcma
 lansdon_test.o: lansdon_test.c cma.h cma.c
 	$(CC) $(OPTIONS) -c lansdon_test.c -o lansdon_test.o
 
@@ -49,7 +48,5 @@ ropin5_test.o: ropin5_test.c
 clean:
 	-rm *.o
 	-rm $(TARGETS)
-	-rm libcma.so
-	-rm ma
 clean_lite:
 	-rm *.o
