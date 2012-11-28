@@ -1,5 +1,5 @@
 CC=gcc
-TARGETS=ma libcma.so proreco_test clean_lite usakgb_test.o usakgb_test lansdon_test wbslage_test dhanlen_test
+TARGETS=libcma.so ma proreco_test usakgb_test lansdon_test clean_lite dhanlen_test
 OPTIONS=-g -fPIC
 
 all: $(TARGETS)
