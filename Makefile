@@ -1,5 +1,5 @@
 CC=gcc
-TARGETS=ma libcma.so proreco_test clean_lite usakgb_test.o usakgb_test lansdon_test wbslage_test
+TARGETS=ma libcma.so proreco_test clean_lite usakgb_test.o usakgb_test lansdon_test wbslage_test dhanlen_test
 OPTIONS=-g -fPIC
 
 all: $(TARGETS)
@@ -45,6 +45,16 @@ ropin5_test: ropin5_test.o
 
 ropin5_test.o: ropin5_test.c
 	$(CC) -c ropin5_test.c
+
+dhanlen_test: dhanlen_test.o cma.o
+	$(CC) dhanlen_test.o -o dhanlen_test -L. -lcma
+
+dhanlen_test.o: dhanlen_test.c cma.h cma.c
+	$(CC) $(OPTIONS) -c dhanlen_test.c -o dhanlen_test.o
+
+printtargets:
+	echo "targets = $(TARGETS)"
+
 
 clean:
 	-rm *.o
