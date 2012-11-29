@@ -21,6 +21,11 @@ wbslage_test: wbslage_test.o
 wbslage_test.o: wbslage_test.c
 	gcc -c wbslage_test.c
 
+taytam_test: taytam_test.o
+	$(CC) taytam_test.o -o taytam_test
+taytam_test.o: taytam_test.c
+	$(CC) $(OPTIONS) -c taytam_test.c -o taytam_test.o
+
 clean:
 	-rm *.o
 	-rm $(TARGETS)
