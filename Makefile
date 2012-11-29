@@ -1,7 +1,7 @@
 CC=gcc
 BASE=`basename $(DIRNAME)`
 DIST=cpts224_2012_test.tar
-TARGETS=libcma.so ma proreco_test usakgb_test lansdon_test dhanlen_test clean_lite cody-curry_test
+TARGETS=libcma.so ma proreco_test usakgb_test lansdon_test dhanlen_test clean_lite cody-curry_test wbslage_test
 OPTIONS=-g -fPIC
 
 all: $(TARGETS)
