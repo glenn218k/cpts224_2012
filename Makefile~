@@ -1,0 +1,31 @@
+CC=gcc
+TARGETS=ma libcma.so usakgb_test.o usakgb_test cody-curry_test
+OPTIONS=-fPIC
+BASE=`basename $(DIRNAME)`
+DIST=cma_CodyCurryHW6.tar
+
+all: $(TARGETS)
+
+libcma.so: cma.o
+	$(CC) $(OPTIONS) -shared cma.o -o libcma.so
+cma.o: cma.c cma.h
+	$(CC) $(OPTIONS) -c cma.c -o cma.o
+ma: ma.o cma.o
+
+usakgb_test: usakgb_test.o cma.o
+	$(CC)  usakgb_test.o cma.o -o usakgb_test
+usakgb_test.o: usakgb_test.c
+	$(CC) -c usakgb_test.c
+
+cody-curry_test: cody-curry_test.o cma.o
+	$(CC) cody-curry.o cma.o -o cody-curry_test
+cody-curry_test.o: cody-curry_test.c
+	$(CC) -c cody-curry_test.c
+
+dist: clean
+	tar -cvf $(DIST) ./$(BASE)
+
+clean:
+	-rm *.o
+	-rm $(TARGETS)
+
